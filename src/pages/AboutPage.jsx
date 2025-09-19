@@ -214,84 +214,139 @@ const AboutPage = () => {
   return (
     <div className="about-page">
       {/* Hero Section */}
-      
       <motion.section 
-  className="about-hero"
-  ref={heroRef}
-  animate={controlsHero}
-  initial="hidden"
-  variants={fadeIn}
-  style={{ backgroundColor: '#e4d8c7ff' }}
->
-  <div 
-  className="hero-container" 
-  style={{ backgroundColor: '#e4d8c7ff' }}  // light brown (tan shade)
->
-    
-    {/* LEFT SIDE: TEXT CONTENT */}
-{/* LEFT SIDE: CONTENT */}
-<div className="hero-content" style={{ color: 'black' }}>
-  <h2 style={{ color: 'black', fontFamily: 'Inter, sans-serif' }}>
-    Every frame begins with a feeling.
-  </h2>
-  <motion.p 
-    style={{ fontFamily: 'Inter, sans-serif', color: 'black' }}
-  >
-    At i2lense, we believe that exceptional photography and videography 
-    capture not just images, but emotions and stories that last a lifetime.
-  </motion.p>
-
-  <motion.div
-    className="hero-buttons"
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.8, delay: 0.6 }}
-  >
-    <a href="/services" className="hero-btn primary">Explore Services</a>
-    <a href="/contact" className="hero-btn secondary">Contact Us</a>
-  </motion.div>
-</div>
-
-{/* RIGHT SIDE: IMAGE GRID */}
-<div className="hero-images-grid">
-
-    <div className="why-choose-images">
-            <div className="image-grid">
-              <motion.div 
-                className="image-item top-right"
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-              >
-                <img src={weddingCouple} alt="Wedding couple in traditional attire" />
-              </motion.div>
-              <motion.div 
-                className="image-item middle-right"
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                viewport={{ once: true }}
-              >
-                <img src={bride} alt="Bride" />
-              </motion.div>
-              <motion.div 
-                className="image-item bottom-right"
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                viewport={{ once: true }}
-              >
-                <img src={engImg} alt="Bride portrait" />
-              </motion.div>
-              
-            </div>
+        className="about-hero"
+        ref={heroRef}
+        animate={controlsHero}
+        initial="hidden"
+        variants={fadeIn}
+      >
+        <div className="hero-container">
+          <div className="hero-images-grid">
+            <motion.div 
+              className="hero-image-item"
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+            >
+              {/* //<img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1464&q=80" alt="Photography" /> */}
+              <img src={wedImg} alt="Wedding 5" />
+              <div className="image-overlay">
+                <span>Wedding</span>
+              </div>
+            </motion.div>
+            <motion.div 
+              className="hero-image-item"
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              {/* <img src="https://images.unsplash.com/photo-1452587925148-ce544e77e70d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1474&q=80" alt="Camera equipment" /> */}
+            <img src={wed1Img} alt="Wedding 5" />
+            </motion.div>
+            <motion.div 
+              className="hero-image-item"
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
+              {/* <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Photography session" /> */}
+              <img src={wed2Img} alt="Wedding 5" />
+              <div className="image-overlay">
+                <span>शादी</span>
+              </div>
+            </motion.div>
+            <motion.div 
+              className="hero-image-item"
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              {/* <img src="https://images.unsplash.com/photo-1554080353-a576cf803bda?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1587&q=80" alt="Photography" /> */}
+              <img src={wed3Img} alt="Wedding 5" />
+              <div className="image-overlay">
+                <span>বিয়ে</span>
+              </div>
+            </motion.div>
+            <motion.div 
+              className="hero-image-item"
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+            >
+              {/* <img src="https://images.unsplash.com/photo-1554048612-b6a482bc67e5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Camera" /> */}
+              <img src={wed4Img} alt="Wedding 5" />
+              <div className="image-overlay">
+                <span>திருமணம்</span>
+              </div>
+            </motion.div>
+            <motion.div 
+              className="hero-image-item"
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+            >
+              {/* <img src="https://images.unsplash.com/photo-1516724562728-afc824a36e84?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Studio" /> */}
+              <img src={wed5Img} alt="Wedding 5" />
+              <div className="image-overlay">
+                <span>పెళ్లి</span>
+              </div>
+            </motion.div>
+            <motion.div 
+              className="hero-image-item"
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.7 }}
+            >
+              {/* <img src="https://images.unsplash.com/photo-1520390138845-fd2d229dd553?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1592&q=80" alt="Photography" /> */}
+            <img src={wed6Img} alt="Wedding 5" />
+            </motion.div>
+            <motion.div 
+              className="hero-image-item"
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+            >
+             <img src={wed7Img} alt="Wedding 5" />
+              {/* <img src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Event" /> */}
+              <div className="image-overlay">
+                <span>ਵਿਆਹ</span>
+              </div>
+            </motion.div>
+            <motion.div 
+              className="hero-image-item"
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.9 }}
+            >
+              <img src={wed8Img} alt="Wedding 5" />
+              {/* <img src="https://images.unsplash.com/photo-1605106702734-205df224ecce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Camera" /> */}
+            </motion.div>
           </div>
-</div>
-
-
-  </div>
-</motion.section>
+         
+        <div className="hero-content" style={{ color: 'black' }}>
+         <h2 style={{ color: 'black', fontFamily: 'Inter, sans-serif' }}>
+  Every frame begins with a feeling.
+</h2>
+          
+  <motion.p 
+  style={{ fontFamily: 'Inter, sans-serif', color: 'black' }}
+>
+  At i2lense, we believe that exceptional photography and videography capture 
+  not just images, but emotions and stories that last a lifetime.
+</motion.p>
+            <motion.div
+              className="hero-buttons"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+            >
+              <a href="/services" className="hero-btn primary">Explore Services</a>
+              <a href="/contact" className="hero-btn secondary">Contact Us</a>
+            </motion.div>
+          </div>
+        </div>
+      </motion.section>
 
       {/* Vision Section */}
       <motion.section 
@@ -350,7 +405,7 @@ const AboutPage = () => {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              WHY CHOOSE US
+              <h2 style={{ color: 'black', fontFamily: 'Inter, sans-serif' }}>WHY CHOOSE US</h2>
             </motion.h2>
             <motion.p 
               className="why-choose-description"
@@ -358,8 +413,8 @@ const AboutPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
-            >
-              We're not just here to capture your story – we're here to feel it with you
+             >
+              <h3 style={{ color: 'black', fontFamily: 'Inter, sans-serif' }}>We're not just here to capture your story – we're here to feel it with you</h3>
             </motion.p>
             <motion.ul 
               className="why-choose-points"
@@ -367,14 +422,13 @@ const AboutPage = () => {
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.4 }}
               viewport={{ once: true }}
-              style={{ color: 'black', fontFamily: 'Inter, sans-serif' }}
             >
-              <li >Art direction shaped by your style and story</li>
-              <li>Collaborative planning with shared references</li>
-              <li>Timeless storytelling led by emotion, not trends</li>
-              <li>Detail-driven approach to every frame</li>
-              <li>Clear, consistent communication</li>
-              <li>Flexible services to suit your budget</li>
+              <li style={{ color: 'black', fontFamily: 'Inter, sans-serif' }}>Art direction shaped by your style and story</li>
+              <li style={{ color: 'black', fontFamily: 'Inter, sans-serif' }}>Collaborative planning with shared references</li>
+              <li style={{ color: 'black', fontFamily: 'Inter, sans-serif' }}>Timeless storytelling led by emotion, not trends</li>
+              <li style={{ color: 'black', fontFamily: 'Inter, sans-serif' }}>Detail-driven approach to every frame</li>
+              <li style={{ color: 'black', fontFamily: 'Inter, sans-serif' }}>Clear, consistent communication</li>
+              <li style={{ color: 'black', fontFamily: 'Inter, sans-serif' }}>Flexible services to suit your budget</li>
             </motion.ul>
           </div>
           <div className="why-choose-images">
@@ -421,10 +475,10 @@ const AboutPage = () => {
               initial="hidden"
               variants={fadeIn}
             >
-              <p className="section-subtitle">Behind the lens</p>
-              <h2 className="team-heading">Passionate creators, masterful storytellers.</h2>
+              <p className="section-subtitle" style={{ color: 'black', fontFamily: 'Inter, sans-serif' }} >Behind the lens</p>
+              <h2 className="team-heading" style={{ color: 'black', fontFamily: 'Inter, sans-serif' }}>Passionate creators, masterful storytellers.</h2>
               <div className="team-btn-container">
-                <a href="#" className="team-btn">View our team</a>
+                <a href="#" className="team-btn" style={{ color: 'white', fontFamily: 'Inter, sans-serif' }}>View our team</a>
               </div>
             </motion.div>
             
@@ -442,8 +496,8 @@ const AboutPage = () => {
                   <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Derick Dsouza" />
                 </div>
                 <div className="member-info">
-                  <h3>Derick Dsouza</h3>
-                  <h4>Founder, Creative Director</h4>
+                  <h3 style={{ color: 'black', fontFamily: 'Inter, sans-serif' }}>Derick Dsouza</h3>
+                  <h4 style={{ color: 'black', fontFamily: 'Inter, sans-serif' }}>Founder, Creative Director</h4>
                 </div>
               </motion.div>
               
@@ -455,8 +509,8 @@ const AboutPage = () => {
                   <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" alt="Abhilasha Dsouza" />
                 </div>
                 <div className="member-info">
-                  <h3>Abhilasha Dsouza</h3>
-                  <h4>Co-Founder, Creative Lead</h4>
+                  <h3 style={{ color: 'black', fontFamily: 'Inter, sans-serif' }}>Abhilasha Dsouza</h3>
+                  <h4 style={{ color: 'black', fontFamily: 'Inter, sans-serif' }}>Co-Founder, Creative Lead</h4>
                 </div>
               </motion.div>
             </motion.div>
