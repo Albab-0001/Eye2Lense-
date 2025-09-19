@@ -1,0 +1,243 @@
+/* Reviews Section with Video Background */
+.reviews-section {
+  padding: 6rem 5%;
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  color: #fff;
+}
+
+/* Video Background */
+.reviews-video-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.reviews-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.5) contrast(1.1);
+}
+
+/* Video Overlay for better text visibility */
+.reviews-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+/* Content Styling */
+.reviews-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 2;
+  animation: fadeIn 1s ease-out;
+}
+
+.reviews-subtitle {
+  font-size: 1.1rem;
+  letter-spacing: 3px;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.reviews-header h2 {
+  font-size: 3rem;
+  color: #fff;
+  margin-bottom: 1rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.reviews-divider {
+  width: 80px;
+  height: 3px;
+  background-color: #fff;
+  margin: 0 auto 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.reviews-description {
+  max-width: 700px;
+  margin: 0 auto;
+  color: #fff;
+  font-size: 1.2rem;
+  line-height: 1.7;
+  font-weight: 500;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Reviews Grid */
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* Review Card */
+.review-card {
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.review-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 15px 35px rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.review-quote {
+  font-size: 3.5rem;
+  color: #fff;
+  opacity: 0.4;
+  position: absolute;
+  top: 1rem;
+  left: 1.5rem;
+  line-height: 1;
+ 
+}
+
+.review-content {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #fff;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+  position: relative;
+  z-index: 1;
+ 
+}
+
+.review-author {
+  display: flex;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+.review-avatar {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+.review-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.review-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.review-name {
+  font-weight: 700;
+  color: #fff;
+  font-size: 1.1rem;
+  margin-bottom: 0.2rem;
+ 
+}
+
+.review-role {
+  font-size: 0.9rem;
+  color: #fff;
+}
+
+.review-rating {
+  display: flex;
+  margin-bottom: 0.8rem;
+}
+
+.star {
+  color: #fff;
+  font-size: 1.2rem;
+  margin-right: 3px;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1); }
+  50% { box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3); }
+  100% { box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1); }
+}
+
+
+
+/* Responsive styles */
+@media (max-width: 992px) {
+  .reviews-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .reviews-section {
+    padding: 4rem 5%;
+  }
+  
+  .reviews-grid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+  }
+  
+  .reviews-header h2 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .reviews-header h2 {
+    font-size: 1.8rem;
+  }
+  
+  .reviews-description {
+    font-size: 1rem;
+  }
+  
+  .review-card {
+    padding: 1.5rem;
+  }
+} 

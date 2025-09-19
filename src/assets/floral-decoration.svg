@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="120" height="30" viewBox="0 0 120 30" xmlns="http://www.w3.org/2000/svg">
+  <g fill="#b8a088" opacity="0.7">
+    <!-- Left branch -->
+    <path d="M10,15 C15,10 25,10 30,15 M20,15 L20,10 M20,15 L15,5 M20,15 L25,5" stroke="#b8a088" stroke-width="1" fill="none"/>
+    <circle cx="15" cy="5" r="2"/>
+    <circle cx="25" cy="5" r="2"/>
+    <circle cx="20" cy="10" r="2"/>
+    
+    <!-- Center decoration -->
+    <circle cx="60" cy="15" r="3"/>
+    <path d="M50,15 L55,15 M65,15 L70,15" stroke="#b8a088" stroke-width="1"/>
+    
+    <!-- Right branch -->
+    <path d="M90,15 C95,10 105,10 110,15 M100,15 L100,10 M100,15 L95,5 M100,15 L105,5" stroke="#b8a088" stroke-width="1" fill="none"/>
+    <circle cx="95" cy="5" r="2"/>
+    <circle cx="105" cy="5" r="2"/>
+    <circle cx="100" cy="10" r="2"/>
+  </g>
+</svg> 
