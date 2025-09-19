@@ -225,6 +225,22 @@ section {
   color: black;
 }
 
+.image-item.top-right{
+    width: 400px;
+    height: 230px;
+  border: 20px solid white;
+}
+.image-item.middle-right{
+     width: 370x;
+    height: 240px;
+  border: 20px solid white;
+}
+.image-item.bottom-right{
+     width: 400px;
+    height: 230px;
+  border: 20px solid white;
+}
+
 /* Vision Section - New Design */
 
 

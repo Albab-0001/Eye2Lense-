@@ -302,7 +302,7 @@ const HomePage = () => {
               }}
               viewport={{ once: true }}
             >
-              Our passion lies in capturing the essence of every brand, idea, or vision and transforming it into powerful narratives that resonate with audiences.
+              <p style={{ color: 'white', fontFamily: 'Inter, sans-serif' }}>Our passion lies in capturing the essence of every brand, idea, or vision and transforming it into powerful narratives that resonate with audiences.</p>
             </motion.p>
             
             <motion.div
