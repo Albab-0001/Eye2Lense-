@@ -303,8 +303,8 @@ const AboutPage = () => {
       >
         <div className="container">
           <div className="vision-content">
-            <h2>As a visionary video production agency, we bring ideas to life through captivating visuals and compelling narratives.</h2>
-            <p>
+            <h2 style={{ color: 'black', fontFamily: 'Inter, sans-serif' }}>As a visionary video production agency, we bring ideas to life through captivating visuals and compelling narratives.</h2>
+            <p style={{ color: 'black', fontFamily: 'Inter, sans-serif' }}>
               Because the best photos and films come from understanding what truly matters to you — not just how it looks, but how it feels. We work closely with you to capture your story in a way that's natural, thoughtful, and true to who you are.
             </p>
             <a href="/contact" className="vision-button">Start a Project</a>
@@ -367,8 +367,9 @@ const AboutPage = () => {
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.4 }}
               viewport={{ once: true }}
+              style={{ color: 'black', fontFamily: 'Inter, sans-serif' }}
             >
-              <li>Art direction shaped by your style and story</li>
+              <li >Art direction shaped by your style and story</li>
               <li>Collaborative planning with shared references</li>
               <li>Timeless storytelling led by emotion, not trends</li>
               <li>Detail-driven approach to every frame</li>
