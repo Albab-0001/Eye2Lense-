@@ -92,4 +92,33 @@ a:hover {
   }
 }
 
-/* Remove Vite default styles that conflict with our design */
+
+/* Updated code for the logo by AK */
+.logo {
+  display: flex;
+  align-items: center;
+  margin-left: -100px; /* adjust value as needed */
+}
+
+
+.logo-content {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* shifts logo left */
+  margin-left: 20px;  /* fine-tune spacing */
+}
+
+.logo-image {
+  height: 280px;   /* adjust as needed */
+  width: 250px;    /* keeps aspect ratio */
+  object-fit: contain;
+  display: block;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.logo-image:hover {
+  transform: scale(1.05); /* small hover zoom effect */
+}
+
+
