@@ -9,7 +9,7 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-container">
         <div className="footer-column main-column">
-          <h3>i2lense</h3>
+          <h3>Eye to Lense  </h3>
           <p>
             Connecting you with the best photography and videography professionals.
           </p>
@@ -35,7 +35,7 @@ const Footer = () => {
           <ul className="contact-info">
             <li>
               <i className="footer-icon">✉️</i>
-              <span>contact@i2lense.com</span>
+              <span>contact@eyetolense.com</span>
             </li>
             <li>
               <i className="footer-icon">📞</i>
@@ -46,7 +46,7 @@ const Footer = () => {
       </div>
       
       <div className="footer-bottom">
-        <p>&copy; {currentYear} i2lense. All rights reserved.</p>
+        <p>&copy; {currentYear} Eye to Lense. All rights reserved.</p>
       </div>
     </footer>
   );

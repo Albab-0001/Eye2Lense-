@@ -57,7 +57,7 @@ const ReviewsSection = () => {
   const reviews = [
     {
       id: 1,
-      content: "Working with i2lense was an absolute pleasure. The photographer captured our wedding day perfectly, with an eye for detail that truly impressed us. Every moment was beautifully preserved.",
+      content: "Working with Eye to Lense was an absolute pleasure. The photographer captured our wedding day perfectly, with an eye for detail that truly impressed us. Every moment was beautifully preserved.",
       author: "Sarah Johnson",
       role: "Wedding Client",
       avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80",
@@ -73,7 +73,7 @@ const ReviewsSection = () => {
     },
     {
       id: 3,
-      content: "As a model, I've worked with many photographers, but the talent I found through i2lense was exceptional. The attention to lighting and composition created the best portfolio shots I've ever had.",
+      content: "As a model, I've worked with many photographers, but the talent I found through Eye to Lense was exceptional. The attention to lighting and composition created the best portfolio shots I've ever had.",
       author: "Elena Rodriguez",
       role: "Professional Model",
       avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=464&q=80",
