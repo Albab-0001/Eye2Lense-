@@ -91,26 +91,26 @@ a:hover {
     font-size: 1rem;
   }
 }
-
-
-/* Updated code for the logo by AK */
+/* Updated by AK  start */
+/* Logo container */
 .logo {
   display: flex;
   align-items: center;
-  margin-left: -100px; /* adjust value as needed */
+  justify-content: flex-start;
+  margin-left: -60px;   /* shifted further left */
 }
 
-
+/* Inner content */
 .logo-content {
   display: flex;
   align-items: center;
-  justify-content: flex-start; /* shifts logo left */
-  margin-left: 20px;  /* fine-tune spacing */
+  justify-content: flex-start;
 }
 
+/* Logo image */
 .logo-image {
-  height: 280px;   /* adjust as needed */
-  width: 250px;    /* keeps aspect ratio */
+  height: 200px;
+  width: auto;
   object-fit: contain;
   display: block;
   cursor: pointer;
@@ -118,7 +118,17 @@ a:hover {
 }
 
 .logo-image:hover {
-  transform: scale(1.05); /* small hover zoom effect */
+  transform: scale(1.05);
 }
 
+/* Mobile adjustment */
+@media (max-width: 768px) {
+  .logo {
+    margin-left: 5px;   /* keep mobile view nice */
+  }
 
+  .logo-image {
+    height: 150px;
+  }
+}
+/* Updated by AK  start  end */

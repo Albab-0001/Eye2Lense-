@@ -332,7 +332,7 @@ const AboutPage = () => {
   <motion.p 
   style={{ fontFamily: 'Inter, sans-serif', color: 'black' }}
 >
-  At i2lense, we believe that exceptional photography and videography capture 
+  At Eye to Lense, we believe that exceptional photography and videography capture 
   not just images, but emotions and stories that last a lifetime.
 </motion.p>
             <motion.div
