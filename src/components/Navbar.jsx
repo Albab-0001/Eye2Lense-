@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import '../styles/Navbar.css';
 
@@ -11,7 +11,9 @@ const Navbar = () => {
   const dropdownRef = useRef(null);
   const userDropdownRef = useRef(null);
   const { currentUser, logout } = useAuth();
+  const location = useLocation();
   const navigate = useNavigate();
+  const isServicesActive = location.pathname.startsWith('/services');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -114,15 +116,28 @@ const Navbar = () => {
       <div className="nav-container">
         <ul className={`nav-links ${mobileMenuOpen ? 'active' : ''}`}>
           <li>
-            <Link to="/" onClick={closeMobileMenu}>Home</Link>
+            <NavLink
+              to="/"
+              onClick={closeMobileMenu}
+              className={({ isActive }) => (isActive ? 'active-link' : '')}
+              end
+            >
+              Home
+            </NavLink>
           </li>
           <li>
-            <Link to="/about" onClick={closeMobileMenu}>About Us</Link>
+            <NavLink
+              to="/about"
+              onClick={closeMobileMenu}
+              className={({ isActive }) => (isActive ? 'active-link' : '')}
+            >
+              About Us
+            </NavLink>
           </li>
           <li className="dropdown" ref={dropdownRef}>
             <span 
               onClick={toggleDropdown} 
-              className="dropdown-toggle"
+              className={`dropdown-toggle ${isServicesActive ? 'active-link' : ''}`}
             >
               Services <i className={`arrow ${showDropdown ? 'up' : 'down'}`}></i>
             </span>
@@ -148,10 +163,22 @@ const Navbar = () => {
             )}
           </li>
           <li>
-            <Link to="/apply-as-vendor" onClick={closeMobileMenu}>Apply as Vendor</Link>
+            <NavLink
+              to="/apply-as-vendor"
+              onClick={closeMobileMenu}
+              className={({ isActive }) => (isActive ? 'active-link' : '')}
+            >
+              Apply as Vendor
+            </NavLink>
           </li>
           <li>
-            <Link to="/contact" onClick={closeMobileMenu}>Contact Us</Link>
+            <NavLink
+              to="/contact"
+              onClick={closeMobileMenu}
+              className={({ isActive }) => (isActive ? 'active-link' : '')}
+            >
+              Contact Us
+            </NavLink>
           </li>
           
           {!currentUser ? (
