@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import ImageCollageSlider from '../components/ImageCollageSlider';
 import ImageCarousel from '../components/ImageCarousel';
-import ContactSection from '../components/ContactSection';
 import PolaroidAnimation from '../components/PolaroidAnimation';
 import ReviewsSection from '../components/ReviewsSection';
 import FAQSection from '../components/FAQSection';
@@ -353,7 +352,6 @@ const HomePage = () => {
       <br />
       <ReviewsSection />
       <FAQSection />
-      <ContactSection />
       <VideoSection />
     </div>
   );

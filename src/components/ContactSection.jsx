@@ -117,14 +117,6 @@ const ContactSection = () => {
     }
   };
 
-  const scrollToSubmit = () => {
-    const form = document.querySelector('.contact-form');
-    form.scrollTo({
-      top: form.scrollHeight,
-      behavior: 'smooth'
-    });
-  };
-
   // Success Popup Component
   const SuccessPopup = () => (
     <motion.div
@@ -280,10 +272,6 @@ const ContactSection = () => {
               )}
             </button>
           </form>
-
-          <button onClick={scrollToSubmit} className="scroll-to-submit-btn">
-            ↓ Scroll to Submit
-          </button>
         </motion.div>
       </div>
     </section>

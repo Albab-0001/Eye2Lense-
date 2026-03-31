@@ -98,7 +98,7 @@ const VendorApplicationPage = () => {
       setTimeout(() => {
         setShowSuccessPopup(false);
         // Redirect to WhatsApp with the provided number
-        window.location.href = `https://wa.me/919142391153?text=Hello, I've submitted a vendor application for ${applicantName}. Please review my application.`;
+        window.location.href = `https://wa.me/917895317700?text=Hello, I've submitted a vendor application for ${applicantName}. Please review my application.`;
       }, 5000);
       
     } catch (error) {

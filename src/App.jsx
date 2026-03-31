@@ -18,6 +18,7 @@ import DataDebug from './pages/DataDebug';
 import TestFirebasePage from './pages/TestFirebasePage';
 import OfflineIndicator from './components/OfflineIndicator';
 import VendorApplicationPage from './pages/VendorApplicationPage';
+import ContactPage from './pages/ContactPage';
 import './App.css';
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/about" element={<AboutPage />} />
+              <Route path="/contact" element={<ContactPage />} />
               <Route path="/services" element={<ServicesPage />} />
               <Route path="/services/:category" element={<ServicesPage />} />
               <Route path="/vendor/:id" element={<VendorDetailPage />} />
