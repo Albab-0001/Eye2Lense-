@@ -422,7 +422,7 @@ const AdminPanel = () => {
                   <td>{vendor.name}</td>
                   <td>{vendor.category}</td>
                   <td>{vendor.city}</td>
-                  <td>${vendor.price}</td>
+                  <td>₹{Number(vendor.price).toLocaleString('en-IN')}</td>
                   <td>{vendor.rating} ★ ({vendor.reviewCount})</td>
                   <td>{vendor.featured ? 'Yes' : 'No'}</td>
                   <td className="action-buttons">
@@ -736,7 +736,7 @@ const VendorModal = ({ vendor, onClose, onSave }) => {
                 </div>
                 
                 <div className="form-group">
-                  <label htmlFor="price">Price ($/hr) *</label>
+                  <label htmlFor="price">Price (₹/hr) *</label>
                   <input
                     type="text"
                     id="price"

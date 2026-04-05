@@ -8,9 +8,22 @@ import '../styles/AuthPages.css';
 const LoginPage = () => {
   const [googleLoading, setGoogleLoading] = useState(false);
   const [emailLoading, setEmailLoading] = useState(false);
+  const [signupBannerMessage, setSignupBannerMessage] = useState('');
   const { loginWithGoogle, loginWithEmail, error, clearError, currentUser } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
+
+  useEffect(() => {
+    try {
+      const stored = sessionStorage.getItem('signupSuccessMessage');
+      if (stored) {
+        setSignupBannerMessage(stored);
+        sessionStorage.removeItem('signupSuccessMessage');
+      }
+    } catch {
+      /* ignore */
+    }
+  }, []);
 
   // Redirect if already logged in
   useEffect(() => {
@@ -64,6 +77,13 @@ const LoginPage = () => {
           <p>Sign in to your account</p>
         </div>
 
+        {(signupBannerMessage ||
+          (location.state?.signupSuccess && location.state?.message)) && (
+          <div className="auth-success" role="status">
+            {signupBannerMessage || location.state?.message}
+          </div>
+        )}
+
         {error && (
           <div className="auth-error" role="alert">
             {error}
@@ -76,7 +96,6 @@ const LoginPage = () => {
             mode="login"
             onSubmit={handleEmailSignIn}
             loading={emailLoading}
-            error={error}
           />
 
           {/* Divider */}

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
-  FaStar, FaMapMarkerAlt, FaDollarSign, FaTags, FaArrowLeft, 
+  FaStar, FaMapMarkerAlt, FaRupeeSign, FaTags, FaArrowLeft, 
   FaPhone, FaEnvelope, FaGlobe, FaInstagram, FaFacebookF, FaTwitter, 
   FaQuoteLeft, FaQuoteRight, FaCamera, FaVideo, FaCheckCircle, FaCalendarAlt
 } from 'react-icons/fa';
@@ -219,7 +219,7 @@ const VendorDetails = () => {
                 <div className="vendor-header-info">
                   <motion.h2 variants={itemVariant}>About {vendor.name}</motion.h2>
                   <motion.div variants={itemVariant} className="vendor-price-badge">
-                    <FaDollarSign /> ${vendor.price}/hr
+                    <FaRupeeSign /> {vendor.price.toLocaleString('en-IN')}/hr
                   </motion.div>
                   <motion.div variants={itemVariant} className="vendor-specialties">
                     <h3>Specialties</h3>
@@ -463,7 +463,7 @@ const VendorDetails = () => {
                       </span>
                     </div>
                     <div className="related-vendor-price">
-                      <FaDollarSign /> ${relatedVendor.price}/hr
+                      <FaRupeeSign /> {relatedVendor.price.toLocaleString('en-IN')}/hr
                     </div>
                   </div>
                 </Link>

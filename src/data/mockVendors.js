@@ -1,267 +1,286 @@
-// Mock vendor data for i2lense
+// Mock vendor data for i2lense — Indian cities, names, and INR rates (~₹1,000–2,000/hr, indicative)
 const mockVendors = [
   {
     id: 1,
-    name: 'Emily Johnson',
+    name: 'Priya Sharma',
     category: 'photography',
-    image: 'https://images.unsplash.com/photo-1492633423870-43d1cd2775eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+    image: 'https://images.unsplash.com/photo-1492633423870-43d1cd2775eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80',
     rating: 5,
-    reviewCount: 28,
-    city: 'New York',
-    price: 350,
+    reviewCount: 48,
+    city: 'New Delhi',
+    price: 1650,
     specialties: ['Wedding', 'Portrait', 'Fashion'],
     featured: true,
-    description: 'Professional photographer with over 10 years of experience specializing in weddings and portraits.'
+    description:
+      'Delhi-based photographer with 10+ years covering weddings and editorials; known for natural light and candid storytelling across NCR.'
   },
   {
     id: 2,
-    name: 'Michael Davis',
+    name: 'Arjun Mehta',
     category: 'videography',
-    image: 'https://images.unsplash.com/photo-1605379399642-870262d3d051?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1506&q=80',
-    rating: 4,
-    reviewCount: 19,
-    city: 'Los Angeles',
-    price: 500,
+    image: 'https://images.unsplash.com/photo-1605379399642-870262d3d051?ixlib=rb-4.0.3&auto=format&fit=crop&w=1506&q=80',
+    rating: 4.8,
+    reviewCount: 36,
+    city: 'Bengaluru',
+    price: 1800,
     specialties: ['Events', 'Commercial', 'Music Videos'],
     featured: true,
-    description: 'Videographer with a creative eye for detail, specializing in commercial and music videos.'
+    description:
+      'Bengaluru videographer for startups and brands; cinematic event films, product explainers, and artist promos with clean colour grade.'
   },
   {
     id: 3,
-    name: 'Sarah Williams',
+    name: 'Ananya Reddy',
     category: 'photography',
-    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80',
+    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=1374&q=80',
     rating: 5,
-    reviewCount: 32,
-    city: 'Chicago',
-    price: 280,
-    specialties: ['Portrait', 'Family', 'Newborn'],
+    reviewCount: 52,
+    city: 'Gurugram',
+    price: 1150,
+    specialties: ['Portrait', 'Family', 'Lifestyle'],
     featured: false,
-    description: 'Passionate photographer who loves capturing genuine emotions and creating lasting memories.'
+    description:
+      'Gurugram-based; warm family portraits and lifestyle shoots for homes and small businesses in the NCR tech corridor.'
   },
   {
     id: 4,
-    name: 'David Wilson',
+    name: 'Vikram Krishnan',
     category: 'videography',
-    image: 'https://images.unsplash.com/photo-1566492031773-4f4e44671857?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80',
-    rating: 4,
-    reviewCount: 15,
-    city: 'Miami',
-    price: 450,
+    image: 'https://images.unsplash.com/photo-1566492031773-4f4e44671857?ixlib=rb-4.0.3&auto=format&fit=crop&w=1374&q=80',
+    rating: 4.7,
+    reviewCount: 29,
+    city: 'Hyderabad',
+    price: 1700,
     specialties: ['Weddings', 'Corporate', 'Real Estate'],
     featured: false,
-    description: 'Videographer specializing in wedding films and corporate videos with a cinematic style.'
+    description:
+      'Hyderabad filmmaker for wedding highlights, IT park launches, and property walkthroughs; bilingual Telugu–Hindi crews available.'
   },
   {
     id: 5,
-    name: 'Jessica Brown',
+    name: 'Rohan Malhotra',
     category: 'photography',
-    image: 'https://images.unsplash.com/photo-1567532939604-b6b5b398ccff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-    rating: 5,
-    reviewCount: 24,
-    city: 'San Francisco',
-    price: 320,
-    specialties: ['Landscape', 'Travel', 'Architecture'],
+    image: 'https://images.unsplash.com/photo-1567532939604-b6b5b398ccff?ixlib=rb-4.0.3&auto=format&fit=crop&w=774&q=80',
+    rating: 4.9,
+    reviewCount: 41,
+    city: 'Mumbai',
+    price: 1500,
+    specialties: ['Travel', 'Architecture', 'Editorial'],
     featured: true,
-    description: 'Photographer with a unique perspective, capturing the beauty of landscapes and architecture.'
+    description:
+      'Mumbai photographer for hospitality and architecture; strong portfolio from Bandra to BKC high-rises and coastal shoots.'
   },
   {
     id: 6,
-    name: 'Robert Martinez',
+    name: 'Siddharth Pillai',
     category: 'videography',
-    image: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1160&q=80',
+    image: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1160&q=80',
     rating: 5,
-    reviewCount: 21,
-    city: 'Austin',
-    price: 600,
+    reviewCount: 38,
+    city: 'Pune',
+    price: 1950,
     specialties: ['Documentary', 'Sports', 'Aerial'],
     featured: true,
-    description: 'Videographer specializing in documentary-style storytelling with a focus on sports and aerial footage.'
+    description:
+      'Pune-based; documentary and sports coverage with licensed drone ops for IT marathons, college fests, and outdoor brands.'
   },
   {
     id: 7,
-    name: 'Amanda Lee',
+    name: 'Kavitha Menon',
     category: 'photography',
-    image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=761&q=80',
-    rating: 4,
-    reviewCount: 18,
-    city: 'New York',
-    price: 250,
+    image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=761&q=80',
+    rating: 4.8,
+    reviewCount: 33,
+    city: 'Chennai',
+    price: 1100,
     specialties: ['Street', 'Events', 'Product'],
     featured: false,
-    description: 'Photographer with a keen eye for detail, specializing in street photography and product shoots.'
+    description:
+      'Chennai creative for expo stalls, SaaS product stills, and vibrant street culture around OMR and ECR events.'
   },
   {
     id: 8,
-    name: 'James Wilson',
+    name: 'Karan Talwar',
     category: 'videography',
-    image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80',
-    rating: 4,
-    reviewCount: 14,
-    city: 'Chicago',
-    price: 400,
-    specialties: ['Wedding', 'Commercial', 'Music Videos'],
+    image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80',
+    rating: 4.6,
+    reviewCount: 27,
+    city: 'Noida',
+    price: 1750,
+    specialties: ['Wedding', 'Commercial', 'Corporate Films'],
     featured: false,
-    description: 'Videographer with a passion for storytelling through wedding films and music videos.'
+    description:
+      'Noida studio partner for corporate films, annual days, and wedding teasers; fast turnaround for NCR clients.'
   },
   {
     id: 9,
-    name: 'Sophia Garcia',
+    name: 'Meera Shah',
     category: 'photography',
-    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80',
     rating: 5,
-    reviewCount: 30,
-    city: 'Los Angeles',
-    price: 380,
+    reviewCount: 46,
+    city: 'Ahmedabad',
+    price: 1600,
     specialties: ['Fashion', 'Editorial', 'Commercial'],
-    featured: false,
-    description: 'Fashion photographer with experience in editorial shoots and commercial campaigns.'
+    featured: true,
+    description:
+      'Ahmedabad fashion and commercial photographer; textile and jewellery campaigns with studio setup in GIFT City vicinity.'
   },
   {
     id: 10,
-    name: 'Daniel Kim',
+    name: 'Aditya Banerjee',
     category: 'videography',
-    image: 'https://images.unsplash.com/photo-1500048993953-d23a436266cf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80',
-    rating: 4,
-    reviewCount: 16,
-    city: 'San Francisco',
-    price: 550,
+    image: 'https://images.unsplash.com/photo-1500048993953-d23a436266cf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1469&q=80',
+    rating: 4.7,
+    reviewCount: 31,
+    city: 'Kolkata',
+    price: 1850,
     specialties: ['Corporate', 'Events', 'Product'],
     featured: false,
-    description: 'Videographer specializing in corporate videos and product demonstrations with a clean style.'
+    description:
+      'Kolkata videographer for heritage venues, bank AGMs, and Durga Puja brand films; Bengali and Hindi scripting support.'
   },
   {
     id: 11,
-    name: 'Olivia Thompson',
+    name: 'Neha Kulkarni',
     category: 'photography',
-    image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80',
-    rating: 4,
-    reviewCount: 22,
-    city: 'Austin',
-    price: 290,
-    specialties: ['Portrait', 'Wedding', 'Events'],
+    image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=688&q=80',
+    rating: 4.9,
+    reviewCount: 35,
+    city: 'New Delhi',
+    price: 1250,
+    specialties: ['Portrait', 'Wedding', 'Pre-wedding'],
     featured: false,
-    description: 'Photographer who captures authentic moments with a natural and timeless style.'
+    description:
+      'South Delhi pre-wedding and intimate wedding specialist; soft pastel edits and same-day social reels add-ons.'
   },
   {
     id: 12,
-    name: 'Thomas Wright',
+    name: 'Rahul Ahuja',
     category: 'videography',
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
-    rating: 5,
-    reviewCount: 19,
-    city: 'Miami',
-    price: 480,
+    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80',
+    rating: 4.8,
+    reviewCount: 28,
+    city: 'Gurugram',
+    price: 1680,
     specialties: ['Travel', 'Documentary', 'Promotional'],
     featured: false,
-    description: 'Videographer with a focus on travel documentaries and promotional videos that tell compelling stories.'
+    description:
+      'Gurugram-based travel and brand stories for fintech and travel apps; on-ground shoots across India with small crew.'
   },
   {
     id: 13,
-    name: 'Rachel Chen',
+    name: 'Sanjana Rao',
     category: 'photography',
-    image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80',
+    image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=764&q=80',
     rating: 5,
-    reviewCount: 26,
-    city: 'Seattle',
-    price: 370,
-    specialties: ['Fine Art', 'Portrait', 'Black & White'],
+    reviewCount: 44,
+    city: 'Bengaluru',
+    price: 1900,
+    specialties: ['Fine Art', 'Portrait', 'Editorial'],
     featured: true,
-    description: 'Fine art photographer with a distinctive style, focusing on emotional portraits and artistic compositions.'
+    description:
+      'Bengaluru editorial photographer; coffee-table books and founder portraits for Koramangala and Indiranagar startups.'
   },
   {
     id: 14,
-    name: 'Marcus Johnson',
+    name: 'Dev Malhotra',
     category: 'videography',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-    rating: 4,
-    reviewCount: 17,
-    city: 'Denver',
-    price: 520,
+    image: 'https://images.unsplash.com/photo-1504257432389-52343af06ae3?ixlib=rb-4.0.3&auto=format&fit=crop&w=774&q=80',
+    rating: 4.7,
+    reviewCount: 24,
+    city: 'Hyderabad',
+    price: 1550,
     specialties: ['Adventure', 'Outdoor', 'Sports'],
     featured: true,
-    description: 'Adventure videographer who captures extreme sports and outdoor activities with dynamic filming techniques.'
+    description:
+      'Hyderabad action and outdoor videography for auto and sports brands; monsoon-safe gear for HITEC City events.'
   },
   {
     id: 15,
-    name: 'Natalie Wong',
+    name: 'Isha Verma',
     category: 'photography',
-    image: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80',
-    rating: 5,
-    reviewCount: 29,
-    city: 'Portland',
-    price: 340,
+    image: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?ixlib=rb-4.0.3&auto=format&fit=crop&w=764&q=80',
+    rating: 4.8,
+    reviewCount: 30,
+    city: 'Mumbai',
+    price: 1000,
     specialties: ['Food', 'Product', 'Commercial'],
     featured: false,
-    description: 'Food and product photographer with an eye for detail, creating appetizing visuals for restaurants and brands.'
+    description:
+      'Mumbai food and product stills for cloud kitchens and D2C brands; shoots in Lower Parel and Andheri studios.'
   },
   {
     id: 16,
-    name: 'Kevin Patel',
+    name: 'Nikhil Sinha',
     category: 'videography',
-    image: 'https://images.unsplash.com/photo-1504257432389-52343af06ae3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+    image: 'https://images.unsplash.com/photo-1618077360395-f6a3b58d3f18?ixlib=rb-4.0.3&auto=format&fit=crop&w=1480&q=80',
     rating: 5,
-    reviewCount: 23,
-    city: 'Boston',
-    price: 580,
+    reviewCount: 26,
+    city: 'Pune',
+    price: 1720,
     specialties: ['Cinematic', 'Wedding', 'Short Films'],
     featured: false,
-    description: 'Cinematic videographer creating emotional wedding films and narrative short stories with a film-like quality.'
+    description:
+      'Pune wedding cinematographer; emotional same-day edits and cinematic colour for Hinjewadi and Koregaon Park weddings.'
   },
   {
     id: 17,
-    name: 'Alicia Rodriguez',
+    name: 'Riya Dutta',
     category: 'photography',
-    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=776&q=80',
-    rating: 4,
-    reviewCount: 20,
-    city: 'San Diego',
-    price: 310,
-    specialties: ['Maternity', 'Baby', 'Family'],
+    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=776&q=80',
+    rating: 4.7,
+    reviewCount: 22,
+    city: 'Chennai',
+    price: 1300,
+    specialties: ['Maternity', 'Family', 'Kids'],
     featured: false,
-    description: 'Photographer specializing in maternity, newborn and family photography, creating timeless memories for families.'
+    description:
+      'Chennai family photographer; maternity, newborn, and annual family albums with home or studio sessions in Velachery.'
   },
   {
     id: 18,
-    name: 'Jason Lee',
+    name: 'Varun Khanna',
     category: 'videography',
-    image: 'https://images.unsplash.com/photo-1618077360395-f6a3b58d3f18?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80',
-    rating: 4,
-    reviewCount: 18,
-    city: 'Atlanta',
-    price: 490,
-    specialties: ['Music Videos', 'Concerts', 'Artist Promos'],
-    featured: false,
-    description: 'Music videographer who works with artists and bands to create engaging music videos and concert footage.'
+    image: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?ixlib=rb-4.0.3&auto=format&fit=crop&w=774&q=80',
+    rating: 5,
+    reviewCount: 33,
+    city: 'Noida',
+    price: 2000,
+    specialties: ['Luxury', 'Fashion', 'Commercials'],
+    featured: true,
+    description:
+      'Noida high-end fashion and commercial director; lookbooks for designers and TVC-style spots for luxury retail.'
   },
   {
     id: 19,
-    name: 'Emma Watson',
+    name: 'Aishwarya Nair',
     category: 'photography',
-    image: 'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+    image: 'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?ixlib=rb-4.0.3&auto=format&fit=crop&w=774&q=80',
     rating: 5,
-    reviewCount: 31,
-    city: 'Chicago',
-    price: 360,
+    reviewCount: 39,
+    city: 'Ahmedabad',
+    price: 1450,
     specialties: ['Corporate', 'Headshots', 'Events'],
     featured: true,
-    description: 'Corporate photographer providing professional headshots and event coverage for businesses and conferences.'
+    description:
+      'Ahmedabad corporate headshots and conference coverage for pharma and manufacturing HQs in SG Highway corridor.'
   },
   {
     id: 20,
-    name: 'Tyler Black',
+    name: 'Sameer Desai',
     category: 'videography',
-    image: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-    rating: 5,
-    reviewCount: 25,
-    city: 'New York',
-    price: 620,
-    specialties: ['Luxury', 'Fashion', 'Commercials'],
-    featured: true,
-    description: 'High-end videographer creating polished commercials and fashion videos for luxury brands and designers.'
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=774&q=80',
+    rating: 4.8,
+    reviewCount: 29,
+    city: 'Bengaluru',
+    price: 1400,
+    specialties: ['Music Videos', 'Concerts', 'Artist Promos'],
+    featured: false,
+    description:
+      'Bengaluru indie and classical artist videos; multi-cam live sessions and lyric videos for streaming platforms.'
   }
 ];
 
-// Export the original mock data
 export default mockVendors;
-export { mockVendors as mockVendorsOriginal }; 
+export { mockVendors as mockVendorsOriginal };

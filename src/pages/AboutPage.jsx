@@ -20,7 +20,6 @@ const AboutPage = () => {
   // Animation controls
   const controlsHero = useAnimation();
   const controlsVision = useAnimation();
-  const controlsProcess = useAnimation();
   const controlsTeam = useAnimation();
   const controlsValues = useAnimation();
   const controlsJourney = useAnimation();
@@ -28,44 +27,9 @@ const AboutPage = () => {
   // Intersection observers
   const [heroRef, heroInView] = useInView({ threshold: 0.3, triggerOnce: true });
   const [visionRef, visionInView] = useInView({ threshold: 0.3, triggerOnce: true });
-  const [processRef, processInView] = useInView({ threshold: 0.3, triggerOnce: true });
   const [teamRef, teamInView] = useInView({ threshold: 0.1, triggerOnce: true });
   const [valuesRef, valuesInView] = useInView({ threshold: 0.3, triggerOnce: true });
   const [journeyRef, journeyInView] = useInView({ threshold: 0.1, triggerOnce: true });
-
-  // Process steps data
-  const processSteps = [
-    {
-      number: "01",
-      title: "WE START WITH A CONSULTATION",
-      description: "TO UNDERSTAND YOUR VISION, PREFERENCES, AND THE STORY YOU WANT TO TELL",
-      image: "https://github.com/sonalkumar1819/images/blob/main/Screenshot%202025-08-18%20235528.png"
-    },
-    {
-      number: "02",
-      title: "WITH EXPERT DIRECTION",
-      description: "AND ATTENTION TO DETAIL, WE CREATE THE PERFECT ATMOSPHERE TO CAPTURE STUNNING MOMENTS",
-      image: "https://images.unsplash.com/photo-1551107671-b3ce56b6c667?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
-    },
-    {
-      number: "03",
-      title: "AFTER THE SHOOT, WE",
-      description: "METICULOUSLY EDIT YOUR IMAGES TO ENHANCE THEIR BEAUTY WHILE KEEPING THEM NATURAL",
-      image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
-    },
-    {
-      number: "04",
-      title: "WITH EXPERT DIRECTION",
-      description: "AND ATTENTION TO DETAIL, WE CREATE THE PERFECT ATMOSPHERE TO CAPTURE STUNNING MOMENTS",
-      image: "https://images.unsplash.com/photo-1597848212624-a19eb35e2651?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80"
-    },
-    {
-      number: "05",
-      title: "POST-PRODUCTION MAGIC –",
-      description: "WE BRING THE EMOTION TO LIFE WITH CAREFUL EDITING",
-      image: "https://images.unsplash.com/photo-1600854109241-48f9e1d38c4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
-    }
-  ];
 
   // Team members data
   const teamMembers = [
@@ -161,9 +125,6 @@ const AboutPage = () => {
     if (visionInView) {
       controlsVision.start('visible');
     }
-    if (processInView) {
-      controlsProcess.start('visible');
-    }
     if (teamInView) {
       controlsTeam.start('visible');
     }
@@ -176,7 +137,6 @@ const AboutPage = () => {
   }, [
     controlsHero, heroInView,
     controlsVision, visionInView,
-    controlsProcess, processInView,
     controlsTeam, teamInView,
     controlsValues, valuesInView,
     controlsJourney, journeyInView
@@ -367,33 +327,6 @@ const AboutPage = () => {
           </div>
         </div>
       </motion.section>
-
-      {/* Our Process Section */}
-      <section className="process-section">
-        <div className="process-header">
-          <h2>OUR PROCESS</h2>
-        </div>
-        <div className="process-container">
-          <div className="mobile-scroll-hint">Swipe to see more →</div>
-          <div className="process-steps">
-            {processSteps.map((step, index) => (
-              <div className="process-step" key={index}>
-                <div className="process-image">
-                  <img src={step.image} alt={`Process step ${step.number}`} />
-                </div>
-                <div className="process-content">
-                  <div className="process-number-row">
-                    <div className="process-number">{step.number}</div>
-                    <div className="process-arrow">→</div>
-                  </div>
-                  <h3>{step.title}</h3>
-                  <p>{step.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Why Choose Us Section */}
       <section className="why-choose-section">

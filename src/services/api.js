@@ -6,7 +6,8 @@ const api = axios.create({
   headers: {
     'Content-Type': 'application/json'
   },
-  withCredentials: true // This is important for cookies/sessions
+  withCredentials: true, // This is important for cookies/sessions
+  timeout: 25000
 });
 
 // Authentication API calls
@@ -20,7 +21,10 @@ export const authAPI = {
       return response.data;
     } catch (error) {
       console.error('API register error:', error);
-      throw error.response ? error.response.data : new Error('Registration failed');
+      if (error.response?.data != null) throw error.response.data;
+      throw new Error(
+        'Required: Firebase Authentication subscription to proceed.'
+      );
     }
   },
 

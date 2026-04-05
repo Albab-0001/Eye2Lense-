@@ -2,6 +2,7 @@ import { validationResult } from 'express-validator';
 import jwt from 'jsonwebtoken';
 import crypto from 'crypto';
 import User from '../../src/models/User.js';
+import { logError } from '../../src/utils/logger.js';
 
 // Helper function to send token response
 const sendTokenResponse = (user, statusCode, res) => {
@@ -80,11 +81,11 @@ export const register = async (req, res, next) => {
       });
     }
 
-    // Send success response but don't log in automatically
-    console.log('Sending success response');
+    // Account created — user signs in on the login page (no JWT cookie here)
     res.status(201).json({
       success: true,
-      message: 'Registration successful! Please log in.',
+      message:
+        'Account created successfully! You can now sign in with your email and password.',
       user: {
         id: user._id,
         displayName: user.displayName,
@@ -154,7 +155,7 @@ export const logout = (req, res) => {
 // @desc    Get current logged in user
 // @route   GET /api/auth/me
 // @access  Private
-export const getMe = async (req, res) => {
+export const getMe = async (req, res, next) => {
   try {
     const user = await User.findById(req.user.id);
 

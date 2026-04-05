@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useRef, useCallback } from 'react';
 import {
   signOut,
   onAuthStateChanged,
@@ -66,11 +66,38 @@ const shouldShowError = (error) => {
   return !SILENT_ERRORS.includes(error?.code);
 };
 
+const getApiErrorMessage = (err) => {
+  if (err == null) return 'Something went wrong';
+  if (typeof err === 'string') return err;
+  if (err instanceof Error) return err.message;
+  if (err.error) return err.error;
+  if (Array.isArray(err.errors) && err.errors.length > 0) {
+    const e = err.errors[0];
+    return typeof e === 'string' ? e : (e.msg || e.message || 'Validation failed');
+  }
+  return err.message || 'Request failed';
+};
+
+const normalizeJwtUser = (u) => {
+  if (!u) return null;
+  return {
+    ...u,
+    id: u.id || u._id,
+    uid: u.uid || (u.id != null ? String(u.id) : u._id != null ? String(u._id) : undefined),
+    role: u.role || 'user'
+  };
+};
+
 export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [authMethod, setAuthMethod] = useState(null); // 'firebase' or 'jwt'
+  const authMethodRef = useRef(authMethod);
+
+  useEffect(() => {
+    authMethodRef.current = authMethod;
+  }, [authMethod]);
 
   // Clear error after 5 seconds
   useEffect(() => {
@@ -142,7 +169,8 @@ export function AuthProvider({ children }) {
       const response = await authAPI.login(credentials);
 
       if (response.success && response.user) {
-        setCurrentUser(response.user);
+        authMethodRef.current = 'jwt';
+        setCurrentUser(normalizeJwtUser(response.user));
         setAuthMethod('jwt');
         logInfo('Email login successful', { email: credentials.email });
         return { success: true };
@@ -150,7 +178,7 @@ export function AuthProvider({ children }) {
         throw new Error('Login failed');
       }
     } catch (error) {
-      const errorMessage = error.error || error.message || 'Login failed';
+      const errorMessage = getApiErrorMessage(error);
       setError(errorMessage);
       logError('Email login failed', error);
       throw new Error(errorMessage);
@@ -162,27 +190,38 @@ export function AuthProvider({ children }) {
       setError('');
       const response = await authAPI.register(userData);
 
-      if (response.success && response.user) {
-        setCurrentUser(response.user);
-        setAuthMethod('jwt');
+      const ok =
+        response &&
+        (response.success === true ||
+          response.success === 'true' ||
+          (response.user && response.message));
+
+      if (ok) {
         logInfo('Email registration successful', { email: userData.email });
-        return { success: true };
-      } else {
-        throw new Error('Registration failed');
+        return {
+          success: true,
+          message:
+            response.message ||
+            'Account created successfully! You can now sign in with your email and password.'
+        };
       }
+      throw new Error('Registration failed');
     } catch (error) {
-      const errorMessage = error.error || error.message || 'Registration failed';
+      const errorMessage = getApiErrorMessage(error);
       setError(errorMessage);
       logError('Email registration failed', error);
       throw new Error(errorMessage);
     }
   };
 
+  const clearError = useCallback(() => setError(''), []);
+
 
 
   const logout = async () => {
     try {
       setError('');
+      authMethodRef.current = null;
 
       // Handle logout based on authentication method
       if (authMethod === 'firebase') {
@@ -259,7 +298,8 @@ export function AuthProvider({ children }) {
         // Check for JWT authentication first
         const jwtAuth = await authAPI.checkAuth();
         if (jwtAuth.isAuthenticated) {
-          setCurrentUser(jwtAuth.user);
+          authMethodRef.current = 'jwt';
+          setCurrentUser(normalizeJwtUser(jwtAuth.user));
           setAuthMethod('jwt');
           setLoading(false);
           return;
@@ -278,6 +318,7 @@ export function AuthProvider({ children }) {
         try {
           if (user) {
             const userData = await createUserDocument(user);
+            authMethodRef.current = 'firebase';
             setCurrentUser({
               ...user,
               ...(userData || {}),
@@ -286,8 +327,9 @@ export function AuthProvider({ children }) {
             setAuthMethod('firebase');
             logInfo('Firebase auth state changed - user logged in', { uid: user.uid });
           } else {
-            // Only clear user if not authenticated via JWT
-            if (authMethod !== 'jwt') {
+            // Only clear user if not authenticated via JWT (use ref — effect closure is stale)
+            if (authMethodRef.current !== 'jwt') {
+              authMethodRef.current = null;
               setCurrentUser(null);
               setAuthMethod(null);
             }
@@ -323,7 +365,7 @@ export function AuthProvider({ children }) {
     registerWithEmail,
     logout,
     updateUserProfile,
-    clearError: () => setError('')
+    clearError
   };
 
   return (

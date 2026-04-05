@@ -125,15 +125,6 @@ const Navbar = () => {
               Home
             </NavLink>
           </li>
-          <li>
-            <NavLink
-              to="/about"
-              onClick={closeMobileMenu}
-              className={({ isActive }) => (isActive ? 'active-link' : '')}
-            >
-              About Us
-            </NavLink>
-          </li>
           <li className="dropdown" ref={dropdownRef}>
             <span 
               onClick={toggleDropdown} 
@@ -169,6 +160,15 @@ const Navbar = () => {
               className={({ isActive }) => (isActive ? 'active-link' : '')}
             >
               Apply as Vendor
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/about"
+              onClick={closeMobileMenu}
+              className={({ isActive }) => (isActive ? 'active-link' : '')}
+            >
+              About Us
             </NavLink>
           </li>
           <li>

@@ -2,11 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { 
-  FaSearch, FaMapMarkerAlt, FaStar, FaFilter, FaCamera, FaVideo, 
-  FaArrowRight, FaChevronDown, FaChevronUp, FaSort, FaArrowUp,
-  FaSortAmountDown, FaSortAmountUpAlt, FaLocationArrow, FaDollarSign
+  FaSearch, FaMapMarkerAlt, FaStar, FaCamera, FaVideo, 
+  FaArrowRight, FaArrowUp,
+  FaSortAmountDown, FaLocationArrow, FaRupeeSign
 } from 'react-icons/fa';
+import mockVendors from '../data/mockVendors';
 import '../styles/ServicesPage.css';
+
+const PRICE_CAP = 2000;
+const PRICE_RANGES = [
+  { label: 'All Prices', min: 0, max: PRICE_CAP },
+  { label: 'Under ₹1,300', min: 0, max: 1299 },
+  { label: '₹1,300 – ₹1,650', min: 1300, max: 1650 },
+  { label: 'Over ₹1,650', min: 1651, max: PRICE_CAP }
+];
 
 // Animation variants
 const fadeIn = {
@@ -39,7 +48,7 @@ const ServicesPage = () => {
   const [filteredVendors, setFilteredVendors] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCity, setSelectedCity] = useState('');
-  const [priceRange, setPriceRange] = useState({ min: 0, max: 1000 });
+  const [priceRange, setPriceRange] = useState({ min: 0, max: PRICE_CAP });
   const [showFilters, setShowFilters] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
@@ -47,189 +56,8 @@ const ServicesPage = () => {
   const vendorsPerPage = 6;
 
 
-  // Mock data for vendors
-  const mockVendors = [
-    {
-      id: 1,
-      name: 'Emily Johnson',
-      category: 'photography',
-      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80',
-      rating: 5,
-      reviewCount: 48,
-      city: 'New York',
-      price: 350,
-      specialties: ['Wedding', 'Portrait', 'Fashion'],
-      featured: true,
-      description: 'Award-winning photographer with over 10 years of experience specializing in capturing timeless moments with a blend of artistic vision and technical excellence.'
-    },
-    {
-      id: 2,
-      name: 'Michael Davis',
-      category: 'videography',
-      image: 'https://images.unsplash.com/photo-1605379399642-870262d3d051?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1506&q=80',
-      rating: 4.8,
-      reviewCount: 32,
-      city: 'Los Angeles',
-      price: 500,
-      specialties: ['Events', 'Commercial', 'Music Videos'],
-      featured: true,
-      description: 'Cinematic videographer with a creative eye for detail, known for dynamic storytelling through the lens of film and commercial productions.'
-    },
-    {
-      id: 3,
-      name: 'Sarah Williams',
-      category: 'photography',
-      image: 'https://images.unsplash.com/photo-1533973860717-d49dfd14cf64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80',
-      rating: 5,
-      reviewCount: 56,
-      city: 'Chicago',
-      price: 280,
-      specialties: ['Portrait', 'Family', 'Newborn'],
-      featured: false,
-      description: 'Passionate photographer specializing in authentic portraiture that celebrates the genuine beauty of connections and milestones in life.'
-    },
-    {
-      id: 4,
-      name: 'David Wilson',
-      category: 'videography',
-      image: 'https://images.unsplash.com/photo-1566492031773-4f4e44671857?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80',
-      rating: 4.7,
-      reviewCount: 29,
-      city: 'Miami',
-      price: 450,
-      specialties: ['Weddings', 'Corporate', 'Real Estate'],
-      featured: false,
-      description: 'Cinematic storyteller who transforms ordinary events into extraordinary films with a perfect blend of technical skill and artistic vision.'
-    },
-    {
-      id: 5,
-      name: 'Jessica Brown',
-      category: 'photography',
-      image: 'https://images.unsplash.com/photo-1567532939604-b6b5b398ccff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-      rating: 4.9,
-      reviewCount: 42,
-      city: 'San Francisco',
-      price: 320,
-      specialties: ['Landscape', 'Travel', 'Architecture'],
-      featured: true,
-      description: 'Fine art photographer with a unique perspective, capturing the breathtaking beauty of landscapes and architectural masterpieces around the world.'
-    },
-    {
-      id: 6,
-      name: 'Robert Martinez',
-      category: 'videography',
-      image: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1160&q=80',
-      rating: 5,
-      reviewCount: 38,
-      city: 'Austin',
-      price: 600,
-      specialties: ['Documentary', 'Sports', 'Aerial'],
-      featured: true,
-      description: 'Award-winning videographer specializing in documentary-style storytelling with a focus on sports and breathtaking aerial cinematography.'
-    },
-    {
-      id: 7,
-      name: 'Amanda Lee',
-      category: 'photography',
-      image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80',
-      rating: 4.8,
-      reviewCount: 31,
-      city: 'New York',
-      price: 290,
-      specialties: ['Street', 'Events', 'Product'],
-      featured: false,
-      description: 'Versatile photographer with a keen eye for capturing the pulse of urban life, memorable events, and stunning product compositions.'
-    },
-    {
-      id: 8,
-      name: 'James Wilson',
-      category: 'videography',
-      image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80',
-      rating: 4.6,
-      reviewCount: 26,
-      city: 'Chicago',
-      price: 400,
-      specialties: ['Wedding', 'Commercial', 'Music Videos'],
-      featured: false,
-      description: 'Creative videographer with a passion for storytelling through cinematic wedding films, impactful commercials, and visually stunning music videos.'
-    },
-    {
-      id: 9,
-      name: 'Sophia Garcia',
-      category: 'photography',
-      image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80',
-      rating: 5,
-      reviewCount: 47,
-      city: 'Los Angeles',
-      price: 380,
-      specialties: ['Fashion', 'Editorial', 'Commercial'],
-      featured: true,
-      description: 'Renowned fashion photographer whose work has been featured in top magazines, creating editorial masterpieces and compelling commercial campaigns.'
-    },
-    {
-      id: 10,
-      name: 'Daniel Kim',
-      category: 'videography',
-      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80',
-      rating: 4.7,
-      reviewCount: 33,
-      city: 'San Francisco',
-      price: 550,
-      specialties: ['Corporate', 'Events', 'Product'],
-      featured: false,
-      description: 'Innovative videographer specializing in creating polished corporate content, dynamic event coverage, and stunning product showcases with cinematic flair.'
-    },
-    {
-      id: 11,
-      name: 'Olivia Thompson',
-      category: 'photography',
-      image: 'https://images.unsplash.com/photo-1528575950036-63c4853d3f6f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=701&q=80',
-      rating: 4.9,
-      reviewCount: 36,
-      city: 'Austin',
-      price: 310,
-      specialties: ['Portrait', 'Wedding', 'Events'],
-      featured: false,
-      description: 'Renowned photographer who captures authentic moments with a natural and timeless style, creating heartfelt portraits and wedding memories.'
-    },
-    {
-      id: 12,
-      name: 'Thomas Wright',
-      category: 'videography',
-      image: 'https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
-      rating: 4.8,
-      reviewCount: 28,
-      city: 'Miami',
-      price: 480,
-      specialties: ['Travel', 'Documentary', 'Promotional'],
-      featured: false,
-      description: 'Award-winning videographer with a focus on immersive travel documentaries and promotional videos that captivate audiences with compelling storytelling.'
-    },
-    {
-      id: 13,
-      name: 'Emma Rodriguez',
-      category: 'photography',
-      image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80',
-      rating: 5,
-      reviewCount: 47,
-      city: 'Los Angeles',
-      price: 380,
-      specialties: ['Fashion', 'Editorial', 'Commercial'],
-      featured: true,
-      description: 'Renowned fashion photographer whose work has been featured in top magazines, creating editorial masterpieces and compelling commercial campaigns.'
-    },
-  ];
-
   // Get unique cities from vendors
   const cities = [...new Set(mockVendors.filter(v => v.category === selectedCategory).map(vendor => vendor.city))];
-
-  // Price ranges with clear labels
-  const priceRanges = [
-    { label: 'All Prices', min: 0, max: 1000 },
-    { label: 'Under $300', min: 0, max: 300 },
-    { label: '$300 - $500', min: 300, max: 500 },
-    { label: 'Over $500', min: 500, max: 1000 }
-  ];
 
   // Initialize vendors based on category
   useEffect(() => {
@@ -299,7 +127,7 @@ const ServicesPage = () => {
   const handlePriceRangeSelect = (range) => {
     setPriceRange(prevRange => 
       prevRange.min === range.min && prevRange.max === range.max
-        ? { min: 0, max: 1000 } // Reset to all prices if clicking the same range
+        ? { min: 0, max: PRICE_CAP } // Reset to all prices if clicking the same range
         : range
     );
   };
@@ -316,7 +144,7 @@ const ServicesPage = () => {
   const resetFilters = () => {
     setSearchTerm('');
     setSelectedCity('');
-    setPriceRange({ min: 0, max: 1000 });
+    setPriceRange({ min: 0, max: PRICE_CAP });
     setSortOrder('default');
     setCurrentPage(1);
   };
@@ -462,12 +290,7 @@ const ServicesPage = () => {
                 Budget Range
               </h3>
                     <div className="price-filters">
-                {[
-                  { label: 'All Prices', min: 0, max: 1000 },
-                  { label: 'Under $300', min: 0, max: 300 },
-                  { label: '$300 - $500', min: 300, max: 500 },
-                  { label: 'Over $500', min: 500, max: 1000 }
-                ].map((range, index) => (
+                {PRICE_RANGES.map((range, index) => (
                         <button
                           key={index}
                     className={`price-filter ${
@@ -537,8 +360,8 @@ const ServicesPage = () => {
                           </div>
                         </div>
                         <div className="vendor-price">
-                          <FaDollarSign className="price-icon" />
-                          <span>${vendor.price}/hr</span>
+                          <FaRupeeSign className="price-icon" />
+                          <span>{vendor.price.toLocaleString('en-IN')}/hr</span>
                         </div>
                         <div className="vendor-specialties">
                           {vendor.specialties.slice(0, 3).map((specialty, index) => (

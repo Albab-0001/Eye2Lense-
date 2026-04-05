@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { FaEye, FaEyeSlash, FaSpinner, FaEnvelope, FaLock, FaUser } from 'react-icons/fa';
 
-const EmailPasswordForm = ({ 
+const EmailPasswordForm = ({
   mode = 'login', // 'login' or 'register'
   onSubmit,
-  loading = false,
-  error = ''
+  loading = false
 }) => {
   const [formData, setFormData] = useState({
     displayName: '',
@@ -72,14 +71,13 @@ const EmailPasswordForm = ({
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (!validateForm()) {
       return;
     }
 
-    // Prepare data for submission
     const submitData = {
       email: formData.email.trim(),
       password: formData.password
@@ -89,7 +87,7 @@ const EmailPasswordForm = ({
       submitData.displayName = formData.displayName.trim();
     }
 
-    onSubmit(submitData);
+    await onSubmit(submitData);
   };
 
   return (
@@ -221,13 +219,6 @@ const EmailPasswordForm = ({
           </>
         )}
       </button>
-
-      {/* Error display */}
-      {error && (
-        <div className="auth-error" role="alert">
-          {error}
-        </div>
-      )}
     </form>
   );
 };

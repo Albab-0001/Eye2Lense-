@@ -46,8 +46,24 @@ const SignupPage = () => {
 
     try {
       setEmailLoading(true);
-      await registerWithEmail(userData);
-      navigate('/', { replace: true });
+      const result = await registerWithEmail(userData);
+      if (result?.success) {
+        const message =
+          result.message ||
+          'Account created successfully! You can now sign in with your email and password.';
+        try {
+          sessionStorage.setItem('signupSuccessMessage', message);
+        } catch {
+          /* ignore quota / private mode */
+        }
+        navigate('/login', {
+          replace: true,
+          state: {
+            signupSuccess: true,
+            message
+          }
+        });
+      }
     } catch (error) {
       // Error handling is done in AuthContext
     } finally {
@@ -75,7 +91,6 @@ const SignupPage = () => {
             mode="register"
             onSubmit={handleEmailSignup}
             loading={emailLoading}
-            error={error}
           />
 
           {/* Divider */}

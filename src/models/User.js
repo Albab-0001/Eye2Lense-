@@ -46,6 +46,17 @@ const userSchema = new mongoose.Schema({
   }
 });
 
+userSchema.set('toJSON', {
+  virtuals: true,
+  transform: (_doc, ret) => {
+    ret.id = ret._id?.toString();
+    delete ret._id;
+    delete ret.__v;
+    delete ret.password;
+    return ret;
+  }
+});
+
 // Encrypt password using bcrypt
 userSchema.pre('save', async function(next) {
   if (!this.isModified('password')) {
