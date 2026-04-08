@@ -34,7 +34,9 @@ export const authAPI = {
       const response = await api.post('/auth/login', credentials);
       return response.data;
     } catch (error) {
-      throw error.response ? error.response.data : new Error('Login failed');
+      throw error.response
+        ? error.response.data
+        : new Error('Login Failed. Something went wrong');
     }
   },
 

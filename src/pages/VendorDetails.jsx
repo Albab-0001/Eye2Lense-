@@ -36,6 +36,7 @@ const VendorDetails = () => {
   const [loading, setLoading] = useState(true);
   const [relatedVendors, setRelatedVendors] = useState([]);
   const [activeTab, setActiveTab] = useState('about');
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
 
   // Get mock vendors from localStorage or fallback to original data
   const getMockVendors = () => {
@@ -110,6 +111,32 @@ const VendorDetails = () => {
     return () => window.removeEventListener('storage', handleStorageChange);
   }, [id]);
 
+  const handleBookNow = () => {
+    setShowSuccessPopup(true);
+    setTimeout(() => {
+      setShowSuccessPopup(false);
+    }, 3000);
+  };
+
+  const SuccessPopup = () => (
+    <motion.div
+      className={`success-popup ${showSuccessPopup ? 'show' : ''}`}
+      initial={{ opacity: 0, scale: 0.8, y: -50 }}
+      animate={{
+        opacity: showSuccessPopup ? 1 : 0,
+        scale: showSuccessPopup ? 1 : 0.8,
+        y: showSuccessPopup ? 0 : -50
+      }}
+      transition={{ duration: 0.3, ease: 'easeOut' }}
+    >
+      <div className="popup-content">
+        <div className="popup-icon">✅</div>
+        <h3>Booking Successful!</h3>
+        <p>Your booking request has been sent.</p>
+      </div>
+    </motion.div>
+  );
+
   if (loading) {
     return (
       <div className="loading-container">
@@ -133,6 +160,7 @@ const VendorDetails = () => {
 
   return (
     <div className={`vendor-details-page ${vendor.category}-page`}>
+      <SuccessPopup />
       {/* Hero Section */}
       <section className="vendor-hero-section">
         <div className="vendor-hero-overlay"></div>
@@ -251,7 +279,7 @@ const VendorDetails = () => {
               <motion.div variants={itemVariant} className="booking-cta">
                 <h3>Ready to Book?</h3>
                 <p>Contact {vendor.name} to discuss your project and check availability.</p>
-                <button className="contact-button">
+                <button className="contact-button" onClick={handleBookNow}>
                   <FaCalendarAlt /> Book Now
                 </button>
               </motion.div>
