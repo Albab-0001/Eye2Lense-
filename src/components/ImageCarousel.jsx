@@ -5,7 +5,7 @@ import sonal1Image from '../assets/images/Pets.png';
 import sonal2Image from '../assets/images/Food.png';
 import sonal3Image from '../assets/images/Portraits.png';
 import sonal4Image from '../assets/images/Slider1.png';
-import sonal5Image from '../assets/images/sonal.png';
+import sonal5Image from '../assets/images/slider2.png';
 
 
 const ImageCarousel = () => {
